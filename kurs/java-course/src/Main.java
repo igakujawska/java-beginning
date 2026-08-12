@@ -1,7 +1,11 @@
+import exceptions.Bank;
 import exceptions.DzieleniePrzezZeroExc;
 import zad73.MatematyczneIntro;
 import zad73.Programist;
 import zad73.TablicaObliczeniowa;
+import zadania_abstrakcja_interfejs.GwiazdaSmierci;
+import zadania_abstrakcja_interfejs.Kolo;
+import zadania_abstrakcja_interfejs.Prostokat;
 
 public class Main{
     public static void main(String[] args) {
@@ -47,6 +51,41 @@ public class Main{
         // wyrzuca wyjątek Unchecked (LiczbaUjemnaException).
         // skoro to wyjątek typu Unchecked, to NIE MUSIMY owijać w try-catch.
         // program przy tej linijce celowo zatrzyma się i wywali
-        System.out.println("Obwód koła: " + MatematyczneIntro.obwodKola(-5));
+        System.out.println("Obwód koła: " + MatematyczneIntro.obwodKola(5));
+
+        Bank.zrobPrzelew(7889.0);
+        /*gdyby nie słowo static przy zrobPrzelew to potrzebne:
+        Bank mojBank = new Bank();
+        mojBank.zrobPrzelew(150.0); */
+
+        System.out.println("\n--- ZADANIE 4 ---");
+        // obiekt nowej klasy
+        GwiazdaSmierci imperium = new GwiazdaSmierci();
+        imperium.atakujLaserem();
+
+        System.out.println("\n--- ZADANIE 5 ---");
+
+        Kolo mojeKolo = new Kolo(5.0);
+        System.out.println("Pole koła: " + mojeKolo.pole());
+        System.out.println("Obwód koła: " + mojeKolo.obwod());
+
+        Prostokat mojProstokat = new Prostokat(4.0, 10.0);
+        System.out.println("Pole prostokąta: " + mojProstokat.pole());
+        System.out.println("Obwód prostokąta: " + mojProstokat.obwod());
+
+        System.out.println("\n--- ZADANIE 6 ---");
+        // klasa anonimowa
+        Info mojeInfo = new Info() {
+            @Override
+            public void wyswietlInfo() {
+                System.out.println("informacja wypisana z klasy anonimowej");
+            }
+        };
+        mojeInfo.wyswietlInfo();
+
     }
+
+        interface Info{
+        void wyswietlInfo();
+        }
 }
