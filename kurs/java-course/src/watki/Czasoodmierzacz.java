@@ -10,7 +10,7 @@ public class Czasoodmierzacz implements Runnable {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                System.out.println("Błąd wątku!");
+                e.printStackTrace();
             }
 
             sekundy++;
